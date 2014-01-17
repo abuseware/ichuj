@@ -21,12 +21,16 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 
+//Signals
+#include <signal.h>
+
 #include "main.h"
 
-const char* name = "iChuj 0.3.0\n";
+const char* name = "iChuj 0.3.1\n";
 
-int fd, forkpid;
-char pid[20];
+int forkpid;
+char shit[512];
+
 
 void usage(char *pname){
 	printf("%s",name);
@@ -41,11 +45,14 @@ int main(int argc, char **argv)
 
 
   //Prepare startup parameters
-	if(argc < 3 )
-		usage(argv[0] );
+	if(argc < 3)
+		usage(argv[0]);
 
 	srand((unsigned int)time(NULL));
 	port = rand() % 65535;
+
+  for(int i = 0; i < 512; i++)
+    shit[i] = (rand() % 136) + 40;
 
   printf("%s",name);
 

