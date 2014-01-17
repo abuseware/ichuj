@@ -6,9 +6,6 @@
 //random seed generator
 #include <time.h>
 
-//isinteger()
-#include <ctype.h>
-
 //error handling
 #include <error.h>
 
@@ -21,9 +18,6 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 
-//Signals
-#include <signal.h>
-
 #include "main.h"
 
 const char* name = "iChuj 0.3.1\n";
@@ -33,7 +27,7 @@ char shit[512];
 
 
 void usage(char *pname){
-	printf("%s",name);
+	printf("%s", name);
 	printf("Usage: %s udp/udplite IPv6\n", pname);
 	exit(EXIT_FAILURE);
 }
@@ -52,24 +46,24 @@ int main(int argc, char **argv)
 	port = rand() % 65535;
 
   for(int i = 0; i < 512; i++)
-    shit[i] = (rand() % 136) + 40;
+    shit[i] = rand() % 256;
 
-  printf("%s",name);
+  printf("%s", name);
 
   if(inet_pton(AF_INET6, argv[2], sin.sin6_addr.s6_addr) != 1){
     perror("Bad IPv6\n");
     exit(EXIT_FAILURE);
   }
 
-	sin.sin6_family=AF_INET6;
-	sin.sin6_port=htons(port);
+	sin.sin6_family = AF_INET6;
+	sin.sin6_port = htons(port);
   
-  forkpid=fork();
-	if(forkpid==-1){
+  forkpid = fork();
+	if(forkpid == -1){
 	  perror("Failed to fork process\n");
     exit(EXIT_FAILURE); 
-	}else if(forkpid!=0){
-	  printf("PORT: %i\nPID: %i\n",port,forkpid);
+	}else if(forkpid != 0){
+	  printf("PORT: %i\nPID: %i\n", port, forkpid);
 	  exit(EXIT_SUCCESS);
 	}
 	setsid();
@@ -86,4 +80,4 @@ int main(int argc, char **argv)
 
   return EXIT_SUCCESS;
 
-}
+}                    
