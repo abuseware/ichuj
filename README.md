@@ -6,7 +6,7 @@ It uses UDP and UDP Lite protocols over IPv6.
 Usage
 =====
  * ./iChuj udp destination_host_ipv6 - for UDP mode
- * ./ichuj udplite destination_host_ipv6 - for UDP Lite mode
+ * ./iChuj udplite destination_host_ipv6 - for UDP Lite mode
 
 If you want to test connectivity with IPv4 remote host, type
 ::ffff:ip.v4.host.addr (ex. ::ffff:127.0.0.1).
@@ -14,5 +14,4 @@ If you want to test connectivity with IPv4 remote host, type
 Compilation
 ===========
 
-With CLang: *clang -O3 -march=native -w -pipe -o iChuj main.c udp.c udplite.c*
-With GCC: *gcc -O3 -march=native -w -pipe -o udp iChuj main.c udp.c udplite.c*
+`$ make`
