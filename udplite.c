@@ -16,7 +16,7 @@ int flood_udplite(struct sockaddr_in6 sin) {
     perror("Can't create socket\n");
     return EXIT_FAILURE;
   }
-  
+
   while(sendto(sock, shit, strlen(shit) + 1, MSG_OOB, (struct sockaddr *)&sin, sizeof(sin)));
 
   return EXIT_SUCCESS;
