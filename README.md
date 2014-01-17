@@ -14,4 +14,6 @@ If you want to test connectivity with IPv4 remote host, type
 Compilation
 ===========
 
-`$ make`
+    $ cmake .
+    $ make
+
